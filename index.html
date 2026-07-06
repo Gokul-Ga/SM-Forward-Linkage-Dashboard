@@ -133,7 +133,6 @@
     </div>
 
     <!-- Floating Brand Logo from Repo -->
-    <!-- Using %20 to handle the space in "SM LOGO.png" -->
     <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo">
 
     <!-- Modern Data Wave Loader -->
@@ -146,7 +145,7 @@
 
     <!-- Smart Content Status Context -->
     <div class="text-container">
-      <div id="status" class="status-text">Establishing secure connection...</div>
+      <div id="status" class="status-text">Establishing database pipeline connection...</div>
     </div>
   </div>
 
@@ -160,14 +159,15 @@
     const progressBar = document.getElementById('progress-bar');
     const statusText = document.getElementById('status');
     
-    // Dynamic array of statuses
+    // 📊 CONTEXTUALIZED STATUS MESSAGES MATRICES FOR SUCHITWA MISSION HIERARCHY
     const stagingStatuses = [
-      "Establishing secure connection...",
-      "Initializing Forward Linkage environment...",
-      "Fetching live MIS metrics...",
-      "Parsing regional dataset records...",
-      "Optimizing visual layout charts...",
-      "Finalizing system render..."
+      "Establishing Database Connection...",
+      "Validating District Registry Data...",
+      "Aggregating Local Body Wise Waste Compilation Metrics...",
+      "Isolating Recyclable vs Non-Recyclable Datasets...",
+      "Synchronizing Forward Linkage Agency Filters...",
+      "Calibrating Time-Series Parameters and Metrics...",
+      "Rendering Statewide Analytics Engine..."
     ];
     
     let currentStatusIndex = 0;
@@ -197,7 +197,7 @@
           statusText.style.transform = 'translateY(0)';
         }, 300);
       }
-    }, 1800);
+    }, 1500); // Accelerated slightly for crisper presentation transition jumps
 
     // 3. Fired instantaneously when Google Apps Script returns full DOM structure
     function completeLoading() {
@@ -205,7 +205,7 @@
       clearInterval(statusInterval);
       
       progressBar.style.width = '100%';
-      statusText.textContent = "Ready";
+      statusText.textContent = "Pipeline synchronized successfully";
       
       setTimeout(() => {
         const loader = document.getElementById('loader-wrapper');
