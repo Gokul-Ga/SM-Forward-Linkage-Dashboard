@@ -145,7 +145,7 @@
 
     <!-- Smart Content Status Context -->
     <div class="text-container">
-      <div id="status" class="status-text">Establishing database pipeline connection...</div>
+      <div id="status" class="status-text">Establishing Database Connection...</div>
     </div>
   </div>
 
@@ -205,7 +205,7 @@
       clearInterval(statusInterval);
       
       progressBar.style.width = '100%';
-      statusText.textContent = "Pipeline synchronized successfully";
+      statusText.textContent = "Database Synchronized Successfully";
       
       setTimeout(() => {
         const loader = document.getElementById('loader-wrapper');
