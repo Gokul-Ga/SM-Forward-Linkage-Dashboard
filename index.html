@@ -5,6 +5,264 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suchitwa Mission - Forward Linkage Dashboard</title>
   <link rel="icon" type="image/png" href="https://suchitwamission.org/public/img/logo/fav.svg" sizes="32x32">
+  
+  <style>
+    /* Global Reset & Base Layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: #0b1329; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    /* Ultra-Modern Loader Wrapper */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #111c3a 0%, #0b1329 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+    }
+
+    /* Top Sleek Progress Bar */
+    #progress-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa, #a78bfa);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+      transition: width 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+
+    /* Central Logo with White Background & Floating Animation */
+    .brand-logo {
+      width: 260px;
+      height: auto;
+      margin-bottom: 28px;
+      background-color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+    }
+
+    /* Modern Data Wave Loader */
+    .data-wave {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .data-wave .bar {
+      width: 4px;
+      height: 20px;
+      border-radius: 4px;
+      animation: wave 1s ease-in-out infinite;
+    }
+
+    .data-wave .bar:nth-child(1) { background: #3b82f6; animation-delay: 0s; }
+    .data-wave .bar:nth-child(2) { background: #60a5fa; animation-delay: 0.15s; }
+    .data-wave .bar:nth-child(3) { background: #818cf8; animation-delay: 0.3s; }
+    .data-wave .bar:nth-child(4) { background: #a78bfa; animation-delay: 0.45s; }
+
+    /* Text & Status Formatting */
+    .text-container {
+      text-align: center;
+    }
+
+    .status-text {
+      color: #64748b;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      height: 18px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Keyframe Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+      50% { transform: scaleY(1.5); opacity: 1; box-shadow: 0 0 8px currentColor; }
+    }
+
+    /* Dismiss State */
+    .fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    /* Reveal body scrolling once loaded */
+    body.loaded {
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader-wrapper">
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo">
+
+    <div class="data-wave">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="text-container">
+      <div id="status" class="status-text">Establishing Database Connection...</div>
+    </div>
+  </div>
+
+
+  <div id="dashboard-container" style="display: none; padding: 20px; color: white;">
+    </div>
+  <script>
+    const progressBar = document.getElementById('progress-bar');
+    const statusText = document.getElementById('status');
+    
+    // 📊 CONTEXTUALIZED STATUS MESSAGES MATRICES FOR SUCHITWA MISSION HIERARCHY
+    const stagingStatuses = [
+      "Establishing Database Connection...",
+      "Validating District Registry Data...",
+      "Aggregating Local Body Wise Waste Compilation Metrics...",
+      "Isolating Recyclable vs Non-Recyclable Datasets...",
+      "Synchronizing Forward Linkage Agency Filters...",
+      "Calibrating Time-Series Parameters and Metrics...",
+      "Rendering Statewide Analytics Engine..."
+    ];
+    
+    let currentStatusIndex = 0;
+    let simulatedProgress = 0;
+
+    // 1. Progress Simulation Loop
+    const progressInterval = setInterval(() => {
+      if (simulatedProgress < 75) {
+        simulatedProgress += Math.floor(Math.random() * 12) + 5; 
+      } else if (simulatedProgress < 95) {
+        simulatedProgress += Math.floor(Math.random() * 2) + 1;  
+      }
+      progressBar.style.width = simulatedProgress + '%';
+    }, 350);
+
+    // 2. Smoothly cycle through statuses
+    const statusInterval = setInterval(() => {
+      if (currentStatusIndex < stagingStatuses.length - 1) {
+        currentStatusIndex++;
+        
+        statusText.style.opacity = '0';
+        statusText.style.transform = 'translateY(4px)';
+        
+        setTimeout(() => {
+          statusText.textContent = stagingStatuses[currentStatusIndex];
+          statusText.style.opacity = '1';
+          statusText.style.transform = 'translateY(0)';
+        }, 300);
+      }
+    }, 1500); 
+
+    // 3. Fired instantaneously when the data finishes loading
+    function completeLoading(data) {
+      clearInterval(progressInterval);
+      clearInterval(statusInterval);
+      
+      progressBar.style.width = '100%';
+      statusText.textContent = "Database Synchronized Successfully";
+      
+      setTimeout(() => {
+        const loader = document.getElementById('loader-wrapper');
+        loader.classList.add('fade-out');
+        
+        // Allow scrolling and show dashboard
+        document.body.classList.add('loaded');
+        document.getElementById('dashboard-container').style.display = 'block';
+        
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 600);
+      }, 400); 
+      
+      // THIS IS WHERE YOU CALL YOUR DASHBOARD BUILDING FUNCTIONS
+      console.log("Dashboard Data Array:", data.data);
+      console.log("Filters Available:", data.filters);
+      // buildMyDashboard(data);
+    }
+    
+    // 4. THE NEW API FETCH (Replaces the iframe)
+    async function loadDashboardData() {
+      // ** UPDATE THIS URL WITH YOUR NEW APPS SCRIPT DEPLOYMENT URL **
+      const API_URL = "https://script.google.com/macros/s/AKfycbylFynumPUp_smzbziNawLXxjnWBwzBxm9h0SlNSvtOw4k1rvtphD3bcXHPd-Ga12cfpg/exec";
+      
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+        
+        // Pass the fetched data to your loader completion function
+        completeLoading(result);
+        
+      } catch (error) {
+        console.error("Failed to load database:", error);
+        clearInterval(statusInterval);
+        statusText.textContent = "Connection Failed. Please refresh the page.";
+        statusText.style.color = "#ef4444"; // Red error text
+      }
+    }
+
+    // Trigger the fetch as soon as the window loads
+    window.onload = loadDashboardData;
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suchitwa Mission - Forward Linkage Dashboard</title>
+  <link rel="icon" type="image/png" href="https://suchitwamission.org/public/img/logo/fav.svg" sizes="32x32">
   <style>
     /* Global Reset & Base Layout */
     body, html {
@@ -219,7 +477,7 @@
   </script>
 
 </body>
-</html>
+</html> -->
 
 
 
