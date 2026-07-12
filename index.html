@@ -46,6 +46,919 @@
     ::-webkit-scrollbar-track { background: #0b1329; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
+    /* ========================================================================= */
+    /* ULTRA-MODERN NEON GLASSMORPHIC LOADER                                    */
+    /* ========================================================================= */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #0f172a 0%, #050b18 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+      overflow: hidden;
+    }
+
+    /* Ambient Tech Cyber Background Orbs */
+    .cyber-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(60px);
+      z-index: -1;
+      animation: ambientPulse 8s ease-in-out infinite alternate;
+    }
+    .orb-1 { top: -10%; left: -10%; animation-delay: 0s; }
+    .orb-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(0,0,0,0) 70%); animation: ambientPulse 12s ease-in-out infinite alternate; }
+
+    @keyframes ambientPulse {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(30px, 20px); opacity: 1; }
+    }
+
+    /* Sci-Fi Floating Container */
+    .loader-container {
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+      padding: 40px 48px;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .brand-logo {
+      width: 250px; height: auto; margin-bottom: 24px; background-color: #ffffff;
+      padding: 14px 28px; border-radius: 16px; animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+    }
+    
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* Circular SVG Matrix Progress Track */
+    .progress-ring-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.35s cubic-bezier(0.1, 0.8, 0.3, 1);
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* Digital Data Stream Wave Elements */
+    .digital-stream {
+      display: flex;
+      gap: 3px;
+      height: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .stream-bar {
+      width: 3px;
+      height: 100%;
+      background: #38bdf8;
+      border-radius: 2px;
+      animation: dataPulse 0.6s ease-in-out infinite alternate;
+    }
+    .stream-bar:nth-child(2) { animation-delay: 0.15s; background: #06b6d4; }
+    .stream-bar:nth-child(3) { animation-delay: 0.3s; background: #10b981; }
+    .stream-bar:nth-child(4) { animation-delay: 0.45s; background: #6366f1; }
+
+    @keyframes dataPulse {
+      0% { transform: scaleY(0.3); opacity: 0.4; }
+      100% { transform: scaleY(1.3); opacity: 1; }
+    }
+
+    .status-text { 
+      color: #94a3b8; 
+      font-size: 13px; 
+      font-weight: 500;
+      letter-spacing: 0.5px; 
+      height: 20px; 
+      transition: opacity 0.3s ease, transform 0.3s ease; 
+    }
+    
+    .fade-out { opacity: 0; visibility: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- ULTRA-MODERN NEON GLASSMORPHIC LOADER VIEW LAYER -->
+  <div id="loader-wrapper">
+    <div class="cyber-orb orb-1"></div>
+    <div class="cyber-orb orb-2"></div>
+    
+    <div class="loader-container">
+      <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
+      
+      <div class="progress-ring-container">
+        <!-- Structural Background Glow Ring -->
+        <svg class="w-full h-full">
+          <circle cx="50" cy="50" r="44" stroke="rgba(255,255,255,0.03)" stroke-width="5" fill="transparent"/>
+          <circle class="progress-ring-circle" id="dynamic-svg-ring" cx="50" cy="50" r="44" stroke="url(#neonGradient)" stroke-width="5" fill="transparent" stroke-dasharray="276.46" stroke-dashoffset="276.46" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="50%" stop-color="#06b6d4" />
+              <stop offset="100%" stop-color="#10b981" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <!-- Real-Time Metrics Percentage readout -->
+        <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-sm font-bold tracking-tight text-sky-400">0%</div>
+      </div>
+
+      <div id="status" class="status-text text-center font-medium">Establishing Database Connection...</div>
+      
+      <div class="digital-stream">
+        <div class="stream-bar"></div><div class="stream-bar"></div><div class="stream-bar"></div><div class="stream-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dashboard-ui" class="min-h-screen p-4 lg:p-6" style="opacity: 0; transition: opacity 0.5s ease-in;">
+    
+    <header class="w-full mx-auto mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 glass-card rounded-2xl shadow-2xl gap-4">
+      <div class="flex items-center gap-4">
+        <div class="bg-white p-1 rounded-xl flex items-center justify-center overflow-hidden h-14 w-36 shadow-md transition-transform duration-200 hover:scale-105 relative z-10">
+          <img id="brandingLogo" src="SM LOGO.png" alt="Suchitwa Mission Logo" class="h-full w-full object-contain" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'" />
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent uppercase">
+            Suchitwa Mission - Forward Linkage Dashboard
+          </h1>
+          <p class="text-xs text-slate-400 tracking-wide font-medium">Local Self Government Department Kerala</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap items-center gap-3 self-end sm:self-auto">
+        <button id="btnManualRefresh" onclick="triggerManualSync()" class="flex items-center gap-2 px-4 py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 cursor-pointer" title="Refresh Data">
+          <svg id="syncIconSVG" class="w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"></path>
+          </svg>
+          Refresh Data
+        </button>
+        <div id="loadingStatus" class="flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 rounded-xl text-xs font-semibold animate-pulse">
+          <div class="w-1.5 h-1.5 rounded-full bg-sky-400"></div> Establishing Connection...
+        </div>
+      </div>
+    </header>
+
+    <main class="w-full space-y-6">
+      <section class="p-5 glass-card rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 shadow-xl">
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">📍 Select District</label>
+          <select id="filterDistrict" onchange="applyFilters()" class="w-full bg-slate-900/60 border border-slate-700/60 text-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm font-medium">
+            <option value="ALL">ALL DISTRICTS</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">📅 Month</label>
+          <select id="filterMonth" onchange="applyFilters()" class="w-full bg-slate-900/60 border border-slate-700/60 text-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm font-medium">
+            <option value="ALL">ALL MONTHS</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">🏗️ Select Waste Collecion Agency </label>
+          <select id="filterType" onchange="applyFilters()" class="w-full bg-slate-900/60 border border-slate-700/60 text-slate-220 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm font-medium">
+            <option value="ALL">ALL</option>
+            <option value="SM Empanelled Agency">SM Empanelled Agency</option>
+            <option value="CKCL">CKCL</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">🏭 SM - Empanelled Agencies</label>
+          <select id="filterAgencyName" onchange="applyFilters()" class="w-full bg-slate-900/60 border border-slate-700/60 text-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm font-medium">
+            <option value="ALL">ALL AGENCIES</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-6 glass-card rounded-2xl relative overflow-hidden shadow-xl kpi-card-animate">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-sky-500"></div>
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">📊 Total Waste</p>
+          <h3 id="cardTotalWaste" class="text-3xl font-extrabold text-sky-400 mt-2 tracking-tight">0.00 T</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Statewide Waste Lifted in Tonnes </p>
+        </div>
+        <div class="p-6 glass-card rounded-2xl relative overflow-hidden shadow-xl kpi-card-animate">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-500"></div>
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">♻️ Recyclables</p>
+          <h3 id="cardRecyclables" class="text-3xl font-extrabold text-emerald-400 mt-2 tracking-tight">0.00 T</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Recyclable Waste In Tonnes</p>
+        </div>
+        <div class="p-6 glass-card rounded-2xl relative overflow-hidden shadow-xl kpi-card-animate">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-rose-500"></div>
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">⚠️ Non-Recyclables</p>
+          <h3 id="cardRejects" class="text-3xl font-extrabold text-rose-400 mt-2 tracking-tight">0.00 T</h3>
+          <p class="text-[10px] text-slate-500 mt-1">Non-Recyclable Waste in Tonnes</p>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="p-5 glass-card rounded-2xl shadow-xl lg:col-span-2">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">📈 Category-Wise Analysis (Tonnes)</h4>
+          <div class="h-64 relative"><canvas id="barChartParameters"></canvas></div>
+        </div>
+        <div class="p-5 glass-card rounded-2xl shadow-xl">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">📈 Recyclable vs Non-Recyclable </h4>
+          <div class="h-64 relative flex justify-center"><canvas id="doughnutMixChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div class="p-5 glass-card rounded-2xl shadow-xl xl:col-span-1">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">📅 Monthly Waste Collection Summary</h4>
+          <div class="overflow-x-auto w-full rounded-xl border border-slate-700/50">
+            <table class="w-full text-left border-collapse text-xs min-w-[340px]">
+              <thead>
+                <tr class="bg-slate-800 text-slate-400 font-semibold uppercase tracking-wider border-b border-slate-700">
+                  <th class="p-3">Months</th>
+                  <th class="p-3 text-right">Recyclables</th>
+                  <th class="p-3 text-right">Non-Recyclables</th>
+                  <th class="p-3 text-right font-bold text-slate-300">TOTAL QTY</th>
+                </tr>
+              </thead>
+              <tbody id="summaryTableBody" class="divide-y divide-slate-800/60 bg-slate-900/10 text-slate-300">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="p-5 glass-card rounded-2xl shadow-xl xl:col-span-2">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">📊 Monthly Waste Collection Trend (Tonnes)</h4>
+          <div class="h-64 relative"><canvas id="lineTrendChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div class="p-5 glass-card rounded-2xl shadow-xl xl:col-span-1 flex flex-col justify-between">
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">🏢 District-Wise Waste Collection Summary</h4>
+            <div class="overflow-x-auto w-full rounded-xl border border-slate-700/50">
+              <div class="max-h-[290px] overflow-y-auto w-full">
+                <table class="w-full text-left border-collapse text-xs min-w-[340px] table-fixed">
+                  <thead>
+                    <tr class="bg-slate-800 text-slate-400 font-semibold uppercase tracking-wider border-b border-slate-700 sticky top-0 z-20">
+                      <th class="p-3 bg-slate-800 w-1/4">District</th>
+                      <th class="p-3 text-right bg-slate-800 w-1/4">Recyclable</th>
+                      <th class="p-3 text-right bg-slate-800 window-header w-1/4">Non-Recyclable</th>
+                      <th class="p-3 text-right font-bold text-slate-300 bg-slate-800 w-1/4">TOTAL QTY</th>
+                    </tr>
+                  </thead>
+                  <tbody id="districtTableBody" class="divide-y divide-slate-800/60 bg-slate-900/10 text-slate-300">
+                  </tbody>
+                </table>
+              </div>
+              <table class="w-full text-left border-collapse text-xs min-w-[340px] table-fixed border-t border-slate-700 bg-slate-800/90 font-bold uppercase text-slate-200">
+                <tr id="districtTableFooter">
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 glass-card rounded-2xl shadow-xl xl:col-span-2">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">📊 District-Wise Comparison (Tonnes)</h4>
+          <div class="h-[340px] relative"><canvas id="districtBarChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="p-5 glass-card rounded-2xl shadow-2xl space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-700/40 pb-3">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">🔍 Real-Time Local Body Data Explorer</h4>
+          <span id="recordCount" class="text-[11px] bg-slate-800 text-slate-400 px-3 py-1 rounded-full font-semibold">0 rows matched</span>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-slate-700/50 max-h-[440px] overflow-y-auto">
+          <table class="w-full text-left border-collapse whitespace-nowrap text-xs">
+            <thead>
+              <tr class="bg-slate-800/80 text-slate-400 font-semibold uppercase tracking-wider border-b border-slate-700 sticky top-0 z-20">
+                <th class="p-4 text-center bg-slate-800">Sl No.</th>
+                <th class="p-4 text-center bg-slate-800">District</th>
+                <th class="p-4 text-center bg-slate-800">Month</th>
+                <th class="p-4 bg-slate-800">Name of Local Body</th>
+                <th class="p-4 text-center bg-slate-800">Type of LSGI</th>
+                <th class="p-4 bg-slate-800">Who Collected Waste</th>
+                <th class="p-4 bg-slate-800">Name of Agency / Partner</th>
+                <th class="p-4 text-right bg-slate-800">Plastic (Kg)</th>
+                <th class="p-4 text-right bg-slate-800">E-Waste (Kg)</th>
+                <th class="p-4 text-right bg-slate-800">Glass (Kg)</th>
+                <th class="p-4 text-right text-emerald-400 bg-slate-800">Total Recyclables (Kg)</th>
+                <th class="p-4 text-right bg-slate-800">Reject Plastic (Kg)</th>
+                <th class="p-4 text-right bg-slate-800">MLP Mix (Kg)</th>
+                <th class="p-4 text-right bg-slate-800">Shredded Plastic (Kg)</th>
+                <th class="p-4 text-right text-rose-400 bg-slate-800">Total Non-Recyclables (Kg)</th>
+                <th class="p-4 text-right font-bold text-sky-400 bg-slate-800">TOTAL QTY (Kg)</th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody" class="divide-y divide-slate-800/60 bg-slate-900/20 text-slate-300">
+              <tr><td colspan="16" class="p-8 text-center text-slate-500">Awaiting data parsing pipeline channel...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // =========================================================================
+    // GLOBAL STATE & SETUP
+    // =========================================================================
+    const API_URL = "https://script.google.com/macros/s/AKfycbylFynumPUp_smzbziNawLXxjnWBwzBxm9h0SlNSvtOw4k1rvtphD3bcXHPd-Ga12cfpg/exec?api=true";
+    
+    let GLOBAL_RAW_DATA = [];
+    let parameterBarChart = null;
+    let categoryMixChart = null;
+    let lineTrendChart = null;
+    let districtBarChart = null;
+    let isRefreshInProgress = false; 
+    
+    const PREDEFINED_MONTHS = ["JUNE 2026", "JULY 2026", "AUGUST 2026", "SEPTEMBER 2026", "OCTOBER 2026", "NOVEMBER 2026", "DECEMBER 2026"];
+    const ALL_14_DISTRICTS = [
+      "Thiruvananthapuram", "Kollam", "Pathanamthitta", "Alappuzha", "Kottayam", 
+      "Idukki", "Ernakulam", "Thrissur", "Palakkad", "Malappuram", 
+      "Kozhikode", "Wayanad", "Kannur", "Kasaragod"
+    ];
+
+    // =========================================================================
+    // LOADER TELEMETRY MOTOR
+    // =========================================================================
+    const dynamicRing = document.getElementById('dynamic-svg-ring');
+    const percentReadout = document.getElementById('percentage-readout');
+    const statusText = document.getElementById('status');
+    const radius = 44;
+    const circumference = 2 * Math.PI * radius; // 276.46
+
+    const stagingStatuses = [
+      "Establishing Database Connection...", "Validating District Registry Data...",
+      "Aggregating Local Body Wise Waste Compilation Metrics...", "Isolating Recyclable vs Non-Recyclable Datasets...",
+      "Synchronizing Forward Linkage Agency Filters...", "Calibrating Time-Series Parameters...",
+      "Rendering Statewide Analytics Engine..."
+    ];
+    let currentStatusIndex = 0; let simulatedProgress = 0;
+
+    function updateLoaderMetrics(percent) {
+      const offset = circumference - (percent / 100) * circumference;
+      dynamicRing.style.strokeDashoffset = offset;
+      percentReadout.textContent = Math.floor(percent) + '%';
+    }
+
+    const progressInterval = setInterval(() => {
+      if (simulatedProgress < 82) { 
+        simulatedProgress += Math.floor(Math.random() * 8) + 4; 
+      } else if (simulatedProgress < 97) { 
+        simulatedProgress += Math.floor(Math.random() * 2) + 0.5; 
+      }
+      if (simulatedProgress > 97) simulatedProgress = 97;
+      updateLoaderMetrics(simulatedProgress);
+    }, 280);
+
+    const statusInterval = setInterval(() => {
+      if (currentStatusIndex < stagingStatuses.length - 1) {
+        currentStatusIndex++;
+        statusText.style.opacity = '0';
+        statusText.style.transform = 'translateY(4px)';
+        setTimeout(() => {
+          statusText.textContent = stagingStatuses[currentStatusIndex];
+          statusText.style.opacity = '1';
+          statusText.style.transform = 'translateY(0)';
+        }, 300);
+      }
+    }, 1300); 
+
+    function completeLoading() {
+      clearInterval(progressInterval);
+      clearInterval(statusInterval);
+      
+      let currentPosition = simulatedProgress;
+      const endTimeline = setInterval(() => {
+        if (currentPosition >= 100) {
+          clearInterval(endTimeline);
+          statusText.textContent = "Database Synchronized Successfully";
+          
+          setTimeout(() => {
+            const loader = document.getElementById('loader-wrapper');
+            loader.classList.add('fade-out');
+            document.body.classList.add('loaded');
+            document.getElementById('dashboard-ui').style.opacity = '1';
+            
+            setTimeout(() => { loader.style.display = 'none'; }, 800);
+          }, 350);
+        } else {
+          currentPosition += 2;
+          if (currentPosition > 100) currentPosition = 100;
+          updateLoaderMetrics(currentPosition);
+        }
+      }, 15);
+    }
+
+    // =========================================================================
+    // DATA PIPELINE (API FETCH ENGINE)
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      runStatewideDataFetchPipeline(false);
+    });
+
+    async function runStatewideDataFetchPipeline(isManualRefresh = false) {
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+        
+        initializeDashboard(result);
+        
+        if (!isManualRefresh) {
+          completeLoading();
+        } else {
+          stopRefreshButtonSpinner();
+        }
+        
+      } catch (error) {
+        console.error("Pipeline Failure:", error);
+        if (!isManualRefresh) {
+          clearInterval(statusInterval);
+          clearInterval(progressInterval);
+          statusText.textContent = "Connection Failed. Please reload page.";
+          statusText.style.color = "#ef4444";
+        } else {
+          document.getElementById('loadingStatus').innerHTML = "❌ Pipeline Failure";
+          stopRefreshButtonSpinner();
+        }
+      }
+    }
+
+    function triggerManualSync() {
+      if (isRefreshInProgress) return;
+      isRefreshInProgress = true;
+
+      document.getElementById('syncIconSVG').classList.add('animate-spin-hardware');
+      document.getElementById('btnManualRefresh').classList.add('opacity-50', 'cursor-not-allowed');
+
+      const loader = document.getElementById('loadingStatus');
+      loader.innerHTML = "<div class='w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping'></div> Fetching Latest Data...";
+      loader.className = "flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 rounded-xl text-xs font-semibold";
+
+      runStatewideDataFetchPipeline(true);
+    }
+
+    function stopRefreshButtonSpinner() {
+      isRefreshInProgress = false;
+      document.getElementById('syncIconSVG').classList.remove('animate-spin-hardware');
+      document.getElementById('btnManualRefresh').classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    // =========================================================================
+    // DASHBOARD ENGINE & INTERACTIVE RENDER PACK
+    // =========================================================================
+    function initializeDashboard(response) {
+      GLOBAL_RAW_DATA = response.data;
+      
+      const currentDistrictSelection = document.getElementById('filterDistrict').value;
+      const currentMonthSelection = document.getElementById('filterMonth').value;
+      const currentAgencySelection = document.getElementById('filterAgencyName').value;
+      
+      populateDropdown('filterDistrict', response.filters.districts);
+      populateDropdown('filterMonth', response.filters.months);
+      populateDropdown('filterAgencyName', response.filters.agencies);
+      
+      if(currentDistrictSelection) document.getElementById('filterDistrict').value = currentDistrictSelection;
+      if(currentMonthSelection) document.getElementById('filterMonth').value = currentMonthSelection;
+      if(currentAgencySelection) document.getElementById('filterAgencyName').value = currentAgencySelection;
+      
+      const loader = document.getElementById('loadingStatus');
+      loader.innerHTML = "⚡ Connected to Database";
+      loader.classList.remove('animate-pulse', 'bg-sky-500/10', 'text-sky-400');
+      loader.classList.add('bg-emerald-500/10', 'text-emerald-400', 'border-emerald-500/20');
+
+      buildCharts();
+      applyFilters();
+    }
+
+    function populateDropdown(elementId, valuesList) {
+      const dropdown = document.getElementById(elementId);
+      dropdown.innerHTML = dropdown.options[0].outerHTML;
+      
+      if (elementId === 'filterMonth') {
+        PREDEFINED_MONTHS.forEach(month => {
+          const opt = document.createElement('option');
+          opt.value = month; opt.innerHTML = month;
+          dropdown.appendChild(opt);
+        });
+        return; 
+      }
+
+      if (elementId === 'filterDistrict') {
+        ALL_14_DISTRICTS.forEach(dist => {
+          const opt = document.createElement('option');
+          opt.value = dist; opt.innerHTML = dist.toUpperCase();
+          dropdown.appendChild(opt);
+        });
+        return;
+      }
+
+      if (elementId === 'filterAgencyName') {
+        const masterAgencies = [
+          "Baymax Waste Management Solutions", "Best Industries", "Bharathiyar Associates", "CCC Zero Waste Pvt. Ltd.", 
+          "CeeKay Green Care Agencies", "D.J.S. Eco Friendly Solution", "Eco Green", "Ecobean Enviro Solutions", 
+          "Ecomate", "Ekaiva Eco Solutions", "Ela Complete Solution Private Limited", "Ever Green Eco Solutions (Green Life)", 
+          "Excel Enterprises", "Glyeco", "Green Brothers Traders LLP", "Green Earth Solutions", "Green Tech Eco Consultancy", 
+          "Green Worms Eco Solutions LLP", "GreenEvo Tech Pvt Ltd", "Greenage Innovations", "I-World Recyclers LLP", 
+          "K and K Waste Management", "Kerala Loge", "Konaris Advanced Polymers", "Mahyoobah Waste Management", 
+          "Malabar Eco Solutions Private Limited", "Movenpro Enviro Solutions LLP", "MRM Eco Solutions Private Limited", 
+          "Nature Guard Plastic Waste Management", "Niravu Zero Waste Management", "NIW Waste Management Solutions", 
+          "Northamps ENV Solution", "P.R Plastic Collection and Segregation", "Pandas World Eco Solutions LLP", 
+          "Patcast Industries", "Planet Earth Eco Solutions Private Limited", "Plasto", "Power Green Eco Solutions", 
+          "Quilon Polymers and Waste Management", "Raju's Traders", "Reclaps (India) Private Limited", "Royal MRC", 
+          "Shudhi Solutions", "Thalir Zero Waste LLP", "Thiruvonam Eco Industries Pvt Ltd", "Tiffot Private Limited", 
+          "Trash Gold Eco Solution", "W Kerala Waste Management", "Other"
+        ];
+        masterAgencies.forEach(agency => {
+          const opt = document.createElement('option');
+          opt.value = agency; opt.innerHTML = agency.toUpperCase();
+          dropdown.appendChild(opt);
+        });
+        return;
+      }
+
+      valuesList.forEach(val => {
+        if(val && val.toString().trim() !== "") {
+          const opt = document.createElement('option');
+          opt.value = val;
+          opt.innerHTML = val.toString().toUpperCase();
+          dropdown.appendChild(opt);
+        }
+      });
+    }
+
+    function applyFilters() {
+      const selDistrict = document.getElementById('filterDistrict').value;
+      const selMonth = document.getElementById('filterMonth').value;
+      const selType = document.getElementById('filterType').value;
+      const selAgencyName = document.getElementById('filterAgencyName').value;
+
+      let totalLifted = 0, recyclablesSum = 0, rejectsSum = 0;
+      let plasticSum = 0, ewasteSum = 0, glassSum = 0, rejectPlasticSum = 0, mlpMixSum = 0, shreddedPlasticSum = 0;
+      
+      let htmlRows = "";
+      let visibleRecordsCount = 0;
+
+      let monthlyMapping = {};
+      PREDEFINED_MONTHS.forEach(m => { monthlyMapping[m] = { rec: 0, nonRec: 0, tot: 0 }; });
+
+      let districtMapping = {};
+      ALL_14_DISTRICTS.forEach(d => { districtMapping[d] = { rec: 0, nonRec: 0, tot: 0 }; });
+
+      GLOBAL_RAW_DATA.forEach(row => {
+        const dDistrict = row[0];
+        let dMonth = row[1].toString().toUpperCase().trim();
+        
+        if (dMonth.indexOf("JUN") !== -1) dMonth = "JUNE 2026";
+        if (dMonth.indexOf("JUL") !== -1) dMonth = "JULY 2026";
+        if (dMonth.indexOf("AUG") !== -1) dMonth = "AUGUST 2026";
+        if (dMonth.indexOf("SEP") !== -1) dMonth = "SEPTEMBER 2026";
+        if (dMonth.indexOf("OCT") !== -1) dMonth = "OCTOBER 2026";
+        if (dMonth.indexOf("NOV") !== -1) dMonth = "NOVEMBER 2026";
+        if (dMonth.indexOf("DEC") !== -1) dMonth = "DECEMBER 2026";
+
+        const dLocalBody = row[3];
+        const dLSGIType = row[4];
+        const dCollectorType = row[7];
+        const dAgencyName = row[8];
+        const dAgencyType = row[7];
+        
+        const vPlastic = parseFloat(row[10]) || 0;
+        const vEWaste = parseFloat(row[11]) || 0;
+        const vGlass = parseFloat(row[13]) || 0;
+        const vTotalRecyclables = parseFloat(row[17]) || 0; 
+        const vRejectPlastic = parseFloat(row[19]) || 0; 
+        const vMLPMix = parseFloat(row[20]) || 0;       
+        const vShreddedPlastic = parseFloat(row[21]) || 0; 
+        const vTotalNonRecyclables = parseFloat(row[23]) || 0; 
+        const vGrandTotal = parseFloat(row[25]) || 0;          
+
+        if (selDistrict !== "ALL" && dDistrict !== selDistrict) return;
+        
+        let matchMonthFilter = false;
+        if (selMonth === "ALL") {
+          matchMonthFilter = true;
+        } else {
+          let cleanSel = selMonth.toUpperCase().trim();
+          if (dMonth === cleanSel || (cleanSel.indexOf("NOV") !== -1 && dMonth.indexOf("NOV") !== -1) || (cleanSel.indexOf("OCT") !== -1 && dMonth.indexOf("OCT") !== -1) || (cleanSel.indexOf("SEP") !== -1 && dMonth.indexOf("SEP") !== -1) || (cleanSel.indexOf("AUG") !== -1 && dMonth.indexOf("AUG") !== -1) || (cleanSel.indexOf("JUL") !== -1 && dMonth.indexOf("JUL") !== -1) || (cleanSel.indexOf("JUN") !== -1 && dMonth.indexOf("JUN") !== -1)) {
+            matchMonthFilter = true;
+          }
+        }
+        if (!matchMonthFilter) return;
+        if (selAgencyName !== "ALL" && dAgencyName !== selAgencyName) return;
+        
+        let resolvedType = "Other";
+        if (dAgencyType.indexOf("Suchitwa Mission") !== -1 || dAgencyType.indexOf("SM Empanelled") !== -1) {
+          resolvedType = "SM Empanelled Agency";
+        } else if (dAgencyType.toUpperCase() === "CKCL") {
+          resolvedType = "CKCL";
+        }
+        if (selType !== "ALL" && resolvedType !== selType) return;
+
+        visibleRecordsCount++;
+        totalLifted += vGrandTotal;
+        recyclablesSum += vTotalRecyclables;
+        rejectsSum += vTotalNonRecyclables;
+        plasticSum += vPlastic;
+        ewasteSum += vEWaste;
+        glassSum += vGlass;
+        rejectPlasticSum += vRejectPlastic;
+        mlpMixSum += vMLPMix;
+        shreddedPlasticSum += vShreddedPlastic;
+
+        let monthlyKey = dMonth;
+        if (!monthlyMapping[monthlyKey]) {
+          PREDEFINED_MONTHS.forEach(m => {
+            if (monthlyKey.indexOf(m.substring(0,3)) !== -1) monthlyKey = m;
+          });
+        }
+
+        if (monthlyMapping[monthlyKey]) {
+          monthlyMapping[monthlyKey].rec += vTotalRecyclables;
+          monthlyMapping[monthlyKey].nonRec += vTotalNonRecyclables;
+          monthlyMapping[monthlyKey].tot += vGrandTotal;
+        }
+
+        if (districtMapping[dDistrict]) {
+          districtMapping[dDistrict].rec += vTotalRecyclables;
+          districtMapping[dDistrict].nonRec += vTotalNonRecyclables;
+          districtMapping[dDistrict].tot += vGrandTotal;
+        }
+
+        htmlRows += `
+          <tr class="hover:bg-slate-800/40 transition-colors">
+            <td class="p-4 text-center font-medium text-slate-500 border-r border-slate-800/30">${visibleRecordsCount}</td>
+            <td class="p-4 text-center font-semibold text-slate-400">${dDistrict}</td>
+            <td class="p-4 text-center text-slate-400">${dMonth}</td>
+            <td class="p-4 font-medium text-slate-200">${dLocalBody}</td>
+            <td class="p-4 text-center text-slate-400">${dLSGIType}</td>
+            <td class="p-4 text-slate-300">${dCollectorType}</td>
+            <td class="p-4 text-slate-300 font-medium">${dAgencyName}</td>
+            <td class="p-4 text-right">${vPlastic.toLocaleString()}</td>
+            <td class="p-4 text-right">${vEWaste.toLocaleString()}</td>
+            <td class="p-4 text-right">${vGlass.toLocaleString()}</td>
+            <td class="p-4 text-right text-emerald-400 font-semibold">${vTotalRecyclables.toLocaleString()}</td>
+            <td class="p-4 text-right">${vRejectPlastic.toLocaleString()}</td>
+            <td class="p-4 text-right">${vMLPMix.toLocaleString()}</td>
+            <td class="p-4 text-right">${vShreddedPlastic.toLocaleString()}</td>
+            <td class="p-4 text-right text-rose-400 font-semibold">${vTotalNonRecyclables.toLocaleString()}</td>
+            <td class="p-4 text-right font-bold text-sky-400 bg-sky-500/5">${vGrandTotal.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('cardTotalWaste').innerHTML = (totalLifted / 1000).toFixed(2) + " T";
+      document.getElementById('cardRecyclables').innerHTML = (recyclablesSum / 1000).toFixed(2) + " T";
+      document.getElementById('cardRejects').innerHTML = (rejectsSum / 1000).toFixed(2) + " T";
+      document.getElementById('recordCount').innerHTML = visibleRecordsCount + " rows matched";
+      document.getElementById('matrixTableBody').innerHTML = htmlRows || `<tr><td colspan="16" class="p-8 text-center text-slate-500">No rows found matching current filters.</td></tr>`;
+
+      let summaryHtml = "";
+      let trendTot = [], trendRec = [], trendNon = [];
+      PREDEFINED_MONTHS.forEach(m => {
+        let data = monthlyMapping[m];
+        trendTot.push(data.tot / 1000); trendRec.push(data.rec / 1000); trendNon.push(data.nonRec / 1000);
+        summaryHtml += `
+          <tr class="hover:bg-slate-800/20 transition-colors">
+            <td class="p-3 font-medium text-slate-300">${m}</td>
+            <td class="p-3 text-right text-emerald-400">${(data.rec / 1000).toFixed(2)} T</td>
+            <td class="p-3 text-right text-rose-400">${(data.nonRec / 1000).toFixed(2)} T</td>
+            <td class="p-3 text-right font-bold bg-white/5">${(data.tot / 1000).toFixed(2)} T</td>
+          </tr>`;
+      });
+      summaryHtml += `
+        <tr class="bg-slate-800 font-bold uppercase border-t border-slate-700 text-slate-200">
+          <td class="p-3 text-left">Total Summary</td>
+          <td class="p-3 text-right text-emerald-400">${(recyclablesSum / 1000).toFixed(2)} T</td>
+          <td class="p-3 text-right text-rose-400">${(rejectsSum / 1000).toFixed(2)} T</td>
+          <td class="p-3 text-right text-sky-400 bg-white/5">${(totalLifted / 1000).toFixed(2)} T</td>
+        </tr>`;
+      document.getElementById('summaryTableBody').innerHTML = summaryHtml;
+
+      let districtHtml = "";
+      let distLabels = [], distTot = [], distRec = [], distNon = [];
+      ALL_14_DISTRICTS.forEach(d => {
+        let data = districtMapping[d];
+        distLabels.push(d); distTot.push(data.tot / 1000); distRec.push(data.rec / 1000); distNon.push(data.nonRec / 1000);
+        districtHtml += `
+          <tr class="hover:bg-slate-800/20 transition-colors">
+            <td class="p-3 w-1/4 font-medium text-slate-300 truncate">${d}</td>
+            <td class="p-3 w-1/4 text-right text-emerald-400">${(data.rec / 1000).toFixed(2)} T</td>
+            <td class="p-3 w-1/4 text-right text-rose-400">${(data.nonRec / 1000).toFixed(2)} T</td>
+            <td class="p-3 w-1/4 text-right font-bold bg-white/5">${(data.tot / 1000).toFixed(2)} T</td>
+          </tr>`;
+      });
+      document.getElementById('districtTableBody').innerHTML = districtHtml;
+
+      document.getElementById('districtTableFooter').innerHTML = `
+        <td class="p-3 w-1/4 text-left truncate">Total Summary</td>
+        <td class="p-3 w-1/4 text-right text-emerald-400">${(recyclablesSum / 1000).toFixed(2)} T</td>
+        <td class="p-3 w-1/4 text-right text-rose-400">${(rejectsSum / 1000).toFixed(2)} T</td>
+        <td class="p-3 w-1/4 text-right text-sky-400 bg-white/5">${(totalLifted / 1000).toFixed(2)} T</td>
+      `;
+
+      updateCharts(
+        [(plasticSum/1000), (ewasteSum/1000), (glassSum/1000), (rejectPlasticSum/1000), (mlpMixSum/1000), (shreddedPlasticSum/1000)], 
+        [recyclablesSum, rejectsSum], 
+        {tot: trendTot, rec: trendRec, non: trendNon},
+        {labels: distLabels, tot: distTot, rec: distRec, non: distNon}
+      );
+    }
+
+    function buildCharts() {
+      if (parameterBarChart && categoryMixChart && lineTrendChart && districtBarChart) return;
+
+      const baseAnimationProfile = { duration: 450, easing: 'easeOutQuart' };
+
+      const ctxBar = document.getElementById('barChartParameters').getContext('2d');
+      parameterBarChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+          labels: ['Plastic', 'E-Waste', 'Glass', 'Reject Plastic', 'MLP Mix', 'Shredded Plastic'],
+          datasets: [{ data: [0, 0, 0, 0, 0, 0], backgroundColor: ['#38bdf8', '#818cf8', '#fb7185', '#ef4444', '#f59e0b', '#ec4899'], borderRadius: 6 }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          animation: baseAnimationProfile,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+            x: { ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+
+      const ctxMix = document.getElementById('doughnutMixChart').getContext('2d');
+      categoryMixChart = new Chart(ctxMix, {
+        type: 'doughnut',
+        data: {
+          labels: ['Recyclables', 'Non-Recyclables / Rejects'],
+          datasets: [{ data: [50, 50], backgroundColor: ['#10b981', '#f43f5e'], borderWidth: 0 }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          animation: baseAnimationProfile,
+          plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', boxWidth: 10, font: { size: 11 } } } },
+          cutout: '78%'
+        }
+      });
+
+      const ctxLine = document.getElementById('lineTrendChart').getContext('2d');
+      lineTrendChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+          labels: ['June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            { label: 'Total Volume', data: [], borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.05)', fill: true, tension: 0.35 },
+            { label: 'Recyclables', borderColor: '#10b981', data: [], tension: 0.35 },
+            { label: 'Rejects', borderColor: '#f43f5e', data: [], tension: 0.35 }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          animation: baseAnimationProfile,
+          plugins: { legend: { position: 'top', labels: { color: '#94a3b8', font: { size: 10 } } } },
+          scales: {
+            y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b' } },
+            x: { ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+
+      const ctxDist = document.getElementById('districtBarChart').getContext('2d');
+      districtBarChart = new Chart(ctxDist, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [
+            { label: 'Total Volume (Tonnes)', data: [], backgroundColor: '#38bdf8', borderRadius: 4 },
+            { label: 'Recyclables (Tonnes)', data: [], backgroundColor: '#10b981', borderRadius: 4 },
+            { label: 'Non-Recyclables (Tonnes)', data: [], backgroundColor: '#f43f5e', borderRadius: 4 }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          animation: baseAnimationProfile,
+          plugins: { legend: { position: 'top', labels: { color: '#94a3b8', font: { size: 10 } } } },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b' } },
+            y: { ticks: { color: '#94a3b8', font: { size: 10 } } }
+          }
+        }
+      });
+    }
+
+    function updateCharts(barData, doughnutData, trendData, distData) {
+      if(!parameterBarChart || !categoryMixChart || !lineTrendChart || !districtBarChart) return;
+      
+      parameterBarChart.data.datasets[0].data = barData;
+      parameterBarChart.update();
+
+      if (doughnutData[0] === 0 && doughnutData[1] === 0) {
+        categoryMixChart.data.datasets[0].data = [1, 0];
+      } else {
+        categoryMixChart.data.datasets[0].data = doughnutData;
+      }
+      categoryMixChart.update();
+
+      lineTrendChart.data.datasets[0].data = trendData.tot;
+      lineTrendChart.data.datasets[1].data = trendData.rec;
+      lineTrendChart.data.datasets[2].data = trendData.non;
+      lineTrendChart.update();
+
+      districtBarChart.data.labels = distData.labels;
+      districtBarChart.data.datasets[0].data = distData.tot;
+      districtBarChart.data.datasets[1].data = distData.rec;
+      districtBarChart.data.datasets[2].data = distData.non;
+      districtBarChart.update();
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--FINAL V1  -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suchitwa Mission - Forward Linkage Dashboard</title>
+  <link rel="icon" type="image/png" href="https://suchitwamission.org/public/img/logo/fav.svg" sizes="32x32">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
+    body, html { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background-color: #0b1329; 
+      color: #f8fafc; 
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    body.loaded { overflow: auto; }
+    body:not(.loaded) { overflow: hidden; }
+
+    .glass-card { background: rgba(30, 41, 59, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.04); }
+    
+    .kpi-card-animate {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+      will-change: transform, box-shadow;
+    }
+    .kpi-card-animate:hover {
+      transform: translateY(-4px) translateZ(0);
+      box-shadow: 0 12px 40px 0 rgba(14, 165, 233, 0.15);
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+    
+    @keyframes spin-clockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-hardware {
+      animation: spin-clockwise 0.8s linear infinite;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1329; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+
     #loader-wrapper {
       position: fixed;
       top: 0;
@@ -778,7 +1691,7 @@
     }
   </script>
 </body>
-</html>
+</html> -->
 
 
 
