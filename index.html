@@ -11,7 +11,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
     body, html { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: #050a15; 
+      background-color: #0b1329; 
       color: #f8fafc; 
       margin: 0;
       padding: 0;
@@ -47,7 +47,7 @@
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
     /* ========================================================================= */
-    /* EXECUTIVE BACKGROUND STARDUST PARTICLE ENGAGEMENT SYSTEM                  */
+    /* CLEAN ECO-FLUID MESH LOADING CANVAS                                       */
     /* ========================================================================= */
     #loader-wrapper {
       position: fixed;
@@ -55,7 +55,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #060b13;
+      /* Lightened base background to a premium deep slate */
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -65,66 +66,52 @@
       overflow: hidden;
     }
 
-    /* Morphing Subtle Fluid Plasma Background Orbs */
-    .fluid-plasma-orb {
+    /* Subtle Environmental Fluid Blobs */
+    .eco-wave-canvas {
       position: absolute;
-      border-radius: 50%;
-      mix-blend-mode: screen;
-      filter: blur(90px);
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       z-index: 1;
-      opacity: 0.45;
-      animation: plasmaWarp 18s ease-in-out infinite alternate;
-      will-change: transform, border-radius;
+      pointer-events: none;
     }
-    .plasma-cyan {
-      width: 550px; height: 550px;
-      top: -10%; left: -5%;
-      background: radial-gradient(circle at center, rgba(14, 165, 233, 0.18) 0%, rgba(6, 182, 212, 0) 70%);
-    }
-    .plasma-emerald {
-      width: 600px; height: 600px;
-      bottom: -15%; right: -5%;
-      background: radial-gradient(circle at center, rgba(16, 185, 129, 0.14) 0%, rgba(52, 211, 153, 0) 70%);
-      animation-duration: 24s;
-      animation-delay: -4s;
-    }
-
-    @keyframes plasmaWarp {
-      0% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%; }
-      50% { transform: translate(40px, 60px) scale(1.1) rotate(90deg); border-radius: 40% 60% 50% 50% / 60% 50% 40% 60%; }
-      100% { transform: translate(-20px, 30px) scale(0.95) rotate(180deg); border-radius: 60% 40% 60% 40% / 40% 60% 50% 50%; }
-    }
-
-    /* CSS-Based Digital Particle Field Matrix */
-    .particle-canvas { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2; pointer-events: none; }
-    
-    .stardust-particle {
+    .eco-blob {
       position: absolute;
-      background: #38bdf8;
       border-radius: 50%;
-      opacity: 0;
-      animation: particleDriftUp 7s linear infinite;
+      filter: blur(100px);
+      animation: ecoFlow 22s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .blob-green {
+      background: rgba(16, 185, 129, 0.15); /* Soft SWM Emerald */
+      width: 65vw; height: 65vw;
+      top: -20%; right: -15%;
+    }
+    .blob-blue {
+      background: rgba(56, 189, 248, 0.12); /* Clean Sky Blue */
+      width: 55vw; height: 55vw;
+      bottom: -15%; left: -10%;
+      animation-delay: -7s;
     }
 
-    @keyframes particleDriftUp {
-      0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
-      10% { opacity: 0.4; }
-      90% { opacity: 0.4; }
-      100% { transform: translateY(-10vh) translateX(50px) scale(1.2); opacity: 0; }
+    @keyframes ecoFlow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-4%, 8%) scale(1.05); }
+      100% { transform: translate(4%, -4%) scale(0.95); }
     }
 
     /* Fixed Aspect Ratio Panel Frame Container Box */
     .telemetry-glass-hub {
       position: relative;
       z-index: 10;
-      background: rgba(10, 17, 32, 0.55);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 
-        0 4px 30px rgba(0, 0, 0, 0.2),
+        0 4px 30px rgba(0, 0, 0, 0.15),
         inset 0 1px 2px rgba(255, 255, 255, 0.05),
-        0 20px 50px rgba(0, 0, 0, 0.5);
+        0 20px 50px rgba(0, 0, 0, 0.4);
       padding: 48px;
       border-radius: 28px;
       display: flex;
@@ -136,7 +123,7 @@
     .brand-logo-static {
       width: 236px; height: auto; margin-bottom: 36px; background-color: #ffffff;
       padding: 14px 28px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     }
 
     /* Concentric Telemetry Rings */
@@ -170,7 +157,7 @@
       margin-bottom: 12px;
     }
     .status-msg-string {
-      color: #94a3b8;
+      color: #cbd5e1;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.3px;
@@ -183,12 +170,12 @@
       display: flex;
       gap: 16px;
       align-items: center;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.04);
       padding: 8px 20px;
       border-radius: 30px;
     }
-    .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.2); position: relative; }
+    .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.3); position: relative; }
     .led-dot.active { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; animation: activeLedPulse 1s ease-in-out infinite alternate; }
     .led-dot.active-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
 
@@ -201,11 +188,11 @@
 
   <!-- LOADER VIEWS TIED ENGINE PORTAL -->
   <div id="loader-wrapper">
-    <div class="fluid-plasma-orb plasma-cyan"></div>
-    <div class="fluid-plasma-orb plasma-emerald"></div>
-    
-    <!-- Programmatically Provisioned Micro Stardust Fields -->
-    <div class="particle-canvas" id="stardust-container"></div>
+    <!-- Clean Environmental Flow Background -->
+    <div class="eco-wave-canvas">
+      <div class="eco-blob blob-green"></div>
+      <div class="eco-blob blob-blue"></div>
+    </div>
     
     <div class="w-full max-w-md px-6">
       <div class="telemetry-glass-hub">
@@ -214,9 +201,9 @@
         <!-- Tech Concentric Dual Matrix Rings -->
         <div class="concentric-ring-wrapper">
           <svg width="130" height="130">
-            <circle cx="65" cy="65" r="46" stroke="rgba(255, 255, 255, 0.02)" stroke-width="4.5" fill="transparent"/>
+            <circle cx="65" cy="65" r="46" stroke="rgba(255, 255, 255, 0.04)" stroke-width="4.5" fill="transparent"/>
             <circle class="progress-ring-circle" id="dynamic-svg-ring" cx="65" cy="65" r="46" stroke="url(#executiveGradient)" stroke-width="4.5" fill="transparent" stroke-dasharray="289.02" stroke-dashoffset="289.02" stroke-linecap="round"/>
-            <circle class="outer-pulse-ring" cx="65" cy="65" r="56" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1.5" stroke-dasharray="15 35" fill="transparent" stroke-linecap="round"/>
+            <circle class="outer-pulse-ring" cx="65" cy="65" r="56" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1.5" stroke-dasharray="15 35" fill="transparent" stroke-linecap="round"/>
             <defs>
               <linearGradient id="executiveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#38bdf8" />
@@ -224,7 +211,7 @@
               </linearGradient>
             </defs>
           </svg>
-          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-slate-200">0%</div>
+          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-slate-100">0%</div>
         </div>
 
         <div class="status-text-constraint-box">
@@ -442,34 +429,6 @@
       "Idukki", "Ernakulam", "Thrissur", "Palakkad", "Malappuram", 
       "Kozhikode", "Wayanad", "Kannur", "Kasaragod"
     ];
-
-    // =========================================================================
-    // INITIALIZE PROGRAMMATIC SUBTLE STARDUST PARTICLES ENGINE
-    // =========================================================================
-    function initBackgroundStardustEngine() {
-      const container = document.getElementById('stardust-container');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'stardust-particle';
-        
-        // Randomize dimensions and distribution maps across 2D plane logic
-        const size = Math.random() * 2.5 + 1.5;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.left = Math.random() * 100 + '%';
-        
-        // Stagger engine cycles to break symmetry
-        star.style.animationDelay = (Math.random() * 7) + 's';
-        star.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        
-        // Mix hue matching structural accents
-        star.style.background = Math.random() > 0.4 ? '#38bdf8' : '#10b981';
-        container.appendChild(star);
-      }
-    }
-    initBackgroundStardustEngine();
 
     // =========================================================================
     // MODULAR LOADER METRICS ENGINE WITH STRUCTURAL SHIFT CONSTRAINTS
