@@ -11,7 +11,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
     body, html { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: #0b1329; 
+      background-color: #050a15; 
       color: #f8fafc; 
       margin: 0;
       padding: 0;
@@ -47,7 +47,7 @@
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
     /* ========================================================================= */
-    /* CLEAN CORPORATE INTERFACE LOADER LAYOUT                                   */
+    /* PREMIUM KINETIC ABSTRACT LOADING CANVAS FRAMEWORK                        */
     /* ========================================================================= */
     #loader-wrapper {
       position: fixed;
@@ -55,89 +55,174 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #111a2e 0%, #090d1a 100%);
+      background-color: #060b13;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.6s ease-in-out, visibility 0.6s;
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
+      overflow: hidden;
     }
 
-    .brand-logo-static {
-      width: 250px; height: auto; margin-bottom: 36px; background-color: #ffffff;
-      padding: 14px 28px; border-radius: 14px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    /* Morphing Abstract Fluid Orbs */
+    .fluid-plasma-orb {
+      position: absolute;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      filter: blur(90px);
+      z-index: 1;
+      opacity: 0.45;
+      animation: plasmaWarp 18s ease-in-out infinite alternate;
+      will-change: transform, border-radius;
+    }
+    .plasma-cyan {
+      width: 550px; height: 550px;
+      top: -10%; left: -5%;
+      background: radial-gradient(circle at center, rgba(14, 165, 233, 0.18) 0%, rgba(6, 182, 212, 0) 70%);
+    }
+    .plasma-emerald {
+      width: 600px; height: 600px;
+      bottom: -15%; right: -5%;
+      background: radial-gradient(circle at center, rgba(16, 185, 129, 0.14) 0%, rgba(52, 211, 153, 0) 70%);
+      animation-duration: 24s;
+      animation-delay: -4s;
     }
 
-    /* Fixed-width layout shell to securely lock structural shifts */
-    .loader-telemetry-panel {
-      width: 320px;
+    @keyframes plasmaWarp {
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%; }
+      50% { transform: translate(40px, 60px) scale(1.1) rotate(90deg); border-radius: 40% 60% 50% 50% / 60% 50% 40% 60%; }
+      100% { transform: translate(-20px, 30px) scale(0.95) rotate(180deg); border-radius: 60% 40% 60% 40% / 40% 60% 50% 50%; }
+    }
+
+    /* Fixed Aspect Ratio Panel Frame */
+    .telemetry-glass-hub {
+      position: relative;
+      z-index: 10;
+      background: rgba(10, 17, 32, 0.5);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05),
+        0 20px 50px rgba(0, 0, 0, 0.5);
+      padding: 48px;
+      border-radius: 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    /* Linear Sleek High-End Loading Bar */
-    .linear-track-base {
       width: 100%;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .linear-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #38bdf8 0%, #10b981 100%);
-      border-radius: 10px;
-      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Constrained dynamic boundaries to completely shield against resizing shifts */
-    .status-msg-container {
+    .brand-logo-static {
+      width: 236px; height: auto; margin-bottom: 36px; background-color: #ffffff;
+      padding: 14px 28px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Micro-Engine Concentric Telemetry Rings Setup */
+    .concentric-ring-wrapper {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin-bottom: 28px;
+    }
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: rotate(-90deg);
+      transform-origin: 65px 65px;
+    }
+
+    /* Subsystem Outer Dash Engine Trigger */
+    .outer-pulse-ring {
+      transform-origin: 65px 65px;
+      animation: loopActivityRing 3.5s linear infinite;
+    }
+    @keyframes loopActivityRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* Layout Lock Constraints Wrapper (Guards Against Font Width Expanding Container Sizes) */
+    .status-text-constraint-box {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 40px;
+      height: 52px;
+      min-height: 52px;
       width: 100%;
       overflow: hidden;
+      margin-bottom: 12px;
     }
-    .status-label-string {
-      color: #64748b;
+    .status-msg-string {
+      color: #94a3b8;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.3px;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.5;
     }
+
+    /* Subsystem Status LED Bullets */
+    .subsystem-led-bar {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 8px 20px;
+      border-radius: 30px;
+    }
+    .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.2); position: relative; }
+    .led-dot.active { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; animation: activeLedPulse 1s ease-in-out infinite alternate; }
+    .led-dot.active-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+
+    @keyframes activeLedPulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
     
     .fade-out { opacity: 0; visibility: hidden; }
   </style>
 </head>
 <body>
 
-  <!-- MINIMALIST CORPORATE GLASS LOADER LAYER -->
+  <!-- LOADER ABSTRACT INTERFACE VIEW LAYER -->
   <div id="loader-wrapper">
-    <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo-static" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
+    <div class="fluid-plasma-orb plasma-cyan"></div>
+    <div class="fluid-plasma-orb plasma-emerald"></div>
     
-    <div class="loader-telemetry-panel">
-      <!-- High-End Linear Loading System -->
-      <div class="linear-track-base">
-        <div id="linear-progressbar-fill" class="linear-progress-fill"></div>
-      </div>
-      
-      <div class="w-full flex justify-between items-center px-1 mb-3">
-        <span class="text-[11px] font-bold tracking-widest text-slate-500 uppercase">System Status</span>
-        <span id="percentage-counter" class="text-xs font-bold text-sky-400 tracking-tight">0%</span>
-      </div>
+    <div class="w-full max-w-md px-6">
+      <div class="telemetry-glass-hub">
+        <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo-static" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
+        
+        <!-- Tech Dual Concentric Array Ring Components -->
+        <div class="concentric-ring-wrapper">
+          <svg width="130" height="130">
+            <!-- Inner Metric Tracking Path Line -->
+            <circle cx="65" cy="65" r="46" stroke="rgba(255, 255, 255, 0.02)" stroke-width="4.5" fill="transparent"/>
+            <circle class="progress-ring-circle" id="dynamic-svg-ring" cx="65" cy="65" r="46" stroke="url(#executiveGradient)" stroke-width="4.5" fill="transparent" stroke-dasharray="289.02" stroke-dashoffset="289.02" stroke-linecap="round"/>
+            
+            <!-- Outer Fast Telemetry Activity Handshake Tracker Layer -->
+            <circle class="outer-pulse-ring" cx="65" cy="65" r="56" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1.5" stroke-dasharray="15 35" fill="transparent" stroke-linecap="round"/>
+            
+            <defs>
+              <linearGradient id="executiveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#10b981" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <!-- Absolute Center Alignment Readout -->
+          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-slate-200">0%</div>
+        </div>
 
-      <!-- Rigid text-box zone container pass -->
-      <div class="status-msg-container">
-        <div id="status" class="status-label-string">Establishing Connection...</div>
+        <!-- Rigid frame zone blocks flex expansion shifts -->
+        <div class="status-text-constraint-box">
+          <div id="status" class="status-msg-string">Establishing Database Connection...</div>
+        </div>
+        
+        <!-- Status Indicator Modules -->
+        <div class="subsystem-led-bar">
+          <div id="led-1" class="led-dot active"></div>
+          <div id="led-2" class="led-dot"></div>
+          <div id="led-3" class="led-dot"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -346,11 +431,13 @@
     ];
 
     // =========================================================================
-    // MINIMALIST TELEMETRY DATA MOTOR
+    // PREMIUM TELEMETRY CIRCULAR ENGINE WITH SHIFT LOCKS
     // =========================================================================
-    const barProgressFill = document.getElementById('linear-progressbar-fill');
-    const percentCounter = document.getElementById('percentage-counter');
-    const statusLabel = document.getElementById('status');
+    const circleRingFill = document.getElementById('dynamic-svg-ring');
+    const numericPercentText = document.getElementById('percentage-readout');
+    const statusLabelNode = document.getElementById('status');
+    const radius = 46;
+    const circumference = 2 * Math.PI * radius; // 289.02
 
     const stagingStatuses = [
       "Establishing Database Connection...", "Validating District Registry Data...",
@@ -360,29 +447,34 @@
     ];
     let currentStatusIndex = 0; let simulatedProgress = 0;
 
-    function refreshProgressBarFill(percent) {
-      barProgressFill.style.width = percent + '%';
-      percentCounter.textContent = Math.floor(percent) + '%';
+    function refreshCircularRingMetrics(percent) {
+      const offset = circumference - (percent / 100) * circumference;
+      circleRingFill.style.strokeDashoffset = offset;
+      numericPercentText.textContent = Math.floor(percent) + '%';
+      
+      // Update LED bullets dynamically based on system progress milestones
+      if(percent > 35) document.getElementById('led-2').className = "led-dot active";
+      if(percent > 75) document.getElementById('led-3').className = "led-dot active";
     }
 
     const progressInterval = setInterval(() => {
       if (simulatedProgress < 85) { 
         simulatedProgress += Math.floor(Math.random() * 6) + 3; 
       } else if (simulatedProgress < 98) { 
-        simulatedProgress += Math.floor(Math.random() * 1.5) + 0.2; 
+        simulatedProgress += Math.floor(Math.random() * 1.5) + 0.1; 
       }
       if (simulatedProgress > 98) simulatedProgress = 98;
-      refreshProgressBarFill(simulatedProgress);
+      refreshCircularRingMetrics(simulatedProgress);
     }, 240);
 
     const statusInterval = setInterval(() => {
       if (currentStatusIndex < stagingStatuses.length - 1) {
         currentStatusIndex++;
-        statusLabel.style.opacity = '0';
+        statusLabelNode.style.opacity = '0';
         setTimeout(() => {
-          statusLabel.textContent = stagingStatuses[currentStatusIndex];
-          statusLabel.style.opacity = '1';
-        }, 200);
+          statusLabelNode.textContent = stagingStatuses[currentStatusIndex];
+          statusLabelNode.style.opacity = '1';
+        }, 220);
       }
     }, 1450); 
 
@@ -391,10 +483,13 @@
       clearInterval(statusInterval);
       
       let currentPosition = simulatedProgress;
-      const finishTimeline = setInterval(() => {
+      const finalAnimationTrack = setInterval(() => {
         if (currentPosition >= 100) {
-          clearInterval(finishTimeline);
-          statusLabel.textContent = "Database Synchronized Successfully";
+          clearInterval(finalAnimationTrack);
+          statusLabelNode.textContent = "Database Synchronized Successfully";
+          document.getElementById('led-1').className = "led-dot active-green";
+          document.getElementById('led-2').className = "led-dot active-green";
+          document.getElementById('led-3').className = "led-dot active-green";
           
           setTimeout(() => {
             const loader = document.getElementById('loader-wrapper');
@@ -402,12 +497,12 @@
             document.body.classList.add('loaded');
             document.getElementById('dashboard-ui').style.opacity = '1';
             
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-          }, 250);
+            setTimeout(() => { loader.style.display = 'none'; }, 700);
+          }, 280);
         } else {
           currentPosition += 2.5;
           if (currentPosition > 100) currentPosition = 100;
-          refreshProgressBarFill(currentPosition);
+          refreshCircularRingMetrics(currentPosition);
         }
       }, 15);
     }
@@ -437,10 +532,13 @@
         if (!isManualRefresh) {
           clearInterval(statusInterval);
           clearInterval(progressInterval);
-          statusLabel.textContent = "⚠️ Database Offline";
-          statusLabel.style.color = "#f43f5e";
-          statusLabel.style.fontWeight = "700";
-          refreshProgressBarFill(0);
+          statusLabelNode.textContent = "⚠️ Database Offline";
+          statusLabelNode.style.color = "#f43f5e";
+          statusLabelNode.style.fontWeight = "700";
+          document.getElementById('led-1').className = "led-dot bg-rose-500";
+          document.getElementById('led-2').className = "led-dot bg-rose-500";
+          document.getElementById('led-3').className = "led-dot bg-rose-500";
+          refreshCircularRingMetrics(0);
         } else {
           document.getElementById('loadingStatus').innerHTML = "❌ Pipeline Failure";
           stopRefreshButtonSpinner();
