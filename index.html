@@ -109,7 +109,7 @@
     .telemetry-glass-hub {
       position: relative;
       z-index: 10;
-      background: rgba(10, 17, 32, 0.6);
+      background: rgba(10, 17, 32, 0.65);
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
       border: 1px solid rgba(255, 255, 255, 0.05);
@@ -121,7 +121,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      overflow: hidden; /* Clips the child white ribbon banner to matching card corner radiuses */
+      overflow: hidden;
     }
 
     /* SOLID HORIZONTAL WHITE BANNER STRIP EXTENDING END-TO-END */
@@ -132,7 +132,7 @@
       justify-content: center;
       align-items: center;
       padding: 18px 0;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
@@ -148,7 +148,7 @@
       position: relative;
       width: 130px;
       height: 130px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .progress-ring-circle {
       transition: stroke-dashoffset 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -167,11 +167,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 52px;
-      min-height: 52px;
+      height: 44px;
+      min-height: 44px;
       width: 100%;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       padding: 0 24px;
     }
     .status-msg-string {
@@ -180,7 +180,7 @@
       font-weight: 500;
       letter-spacing: 0.3px;
       text-align: center;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* Subsystem Status LED Bullets */
@@ -192,7 +192,7 @@
       border: 1px solid rgba(255, 255, 255, 0.03);
       padding: 8px 20px;
       border-radius: 30px;
-      margin-bottom: 40px; /* Aligns space from bottom curve margin boundaries cleanly */
+      margin-bottom: 28px;
     }
     .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.2); position: relative; }
     .led-dot.active { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; animation: activeLedPulse 1s ease-in-out infinite alternate; }
@@ -232,6 +232,16 @@
             </defs>
           </svg>
           <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-slate-200">0%</div>
+        </div>
+
+        <!-- RE-INCORPORATED OFFICIAL DEPARTMENT REGISTRY BRAND HEADERS -->
+        <div class="w-full text-center px-6 mb-4 select-none">
+          <h2 class="text-sm font-bold tracking-tight bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent uppercase mb-1">
+            Suchitwa Mission - Forward Linkage Dashboard
+          </h2>
+          <p class="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
+            Local Self Government Department Kerala
+          </p>
         </div>
 
         <div class="status-text-constraint-box">
@@ -945,7 +955,6 @@
 
       lineTrendChart.data.datasets[0].data = trendData.tot;
       lineTrendChart.data.datasets[1].data = trendData.rec;
-      lineTrendTrack = trendData.non;
       lineTrendChart.data.datasets[2].data = trendData.non;
       lineTrendChart.update();
 
