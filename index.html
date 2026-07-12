@@ -47,7 +47,7 @@
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
     /* ========================================================================= */
-    /* ULTRA-MODERN SCI-FI AMBIENT LOADER CANVAS                                */
+    /* CLEAN CORPORATE INTERFACE LOADER LAYOUT                                   */
     /* ========================================================================= */
     #loader-wrapper {
       position: fixed;
@@ -55,131 +55,64 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%);
+      background: radial-gradient(circle at center, #111a2e 0%, #090d1a 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
-      overflow: hidden;
+      transition: opacity 0.6s ease-in-out, visibility 0.6s;
     }
 
-    /* Moving Deep-Space Tech Matrix Grids */
-    .cyber-grid {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image: linear-gradient(rgba(56, 189, 248, 0.015) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(56, 189, 248, 0.015) 1px, transparent 1px);
-      background-size: 30px 30px;
-      background-position: center center;
-      transform: perspective(500px) rotateX(60deg);
-      z-index: 1;
-      animation: gridDrift 24s linear infinite;
+    .brand-logo-static {
+      width: 250px; height: auto; margin-bottom: 36px; background-color: #ffffff;
+      padding: 14px 28px; border-radius: 14px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
 
-    @keyframes gridDrift {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 100%; }
-    }
-
-    /* Ambient Bioluminescent Cloud Orbs */
-    .ambient-glow-orb {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-      z-index: 2;
-      animation: ambientFloat 10s ease-in-out infinite alternate;
-    }
-    .orb-alpha { top: -20%; left: -10%; }
-    .orb-beta { bottom: -20%; right: -10%; background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(0,0,0,0) 70%); animation-duration: 14s; }
-
-    @keyframes ambientFloat {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.1) translate(40px, -30px); }
-    }
-
-    /* Fixed-Width Shell Shielding Against Layout Shifts */
-    .loader-frame-shell {
-      position: relative;
-      z-index: 10;
-      background: rgba(13, 22, 39, 0.65);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 50px -5px rgba(6, 182, 212, 0.08), 0 30px 60px -15px rgba(0, 0, 0, 0.6);
-      padding: 44px;
-      border-radius: 32px;
+    /* Fixed-width layout shell to securely lock structural shifts */
+    .loader-telemetry-panel {
+      width: 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    /* Linear Sleek High-End Loading Bar */
+    .linear-track-base {
       width: 100%;
-    }
-
-    .brand-logo {
-      width: 240px; height: auto; margin-bottom: 32px; background-color: #ffffff;
-      padding: 14px 28px; border-radius: 16px; animation: smoothLevitate 4s ease-in-out infinite;
-      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
-    }
-    
-    @keyframes smoothLevitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-    /* Circular SVG Telemetry Ring */
-    .ring-track-box {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
       position: relative;
-      width: 110px;
-      height: 110px;
-      margin-bottom: 24px;
     }
-    .progress-ring-circle {
-      transition: stroke-dashoffset 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-      transform: rotate(-90deg);
-      transform-origin: 50% 50%;
-    }
-
-    /* Pulse Engine Glow Bars */
-    .pulse-data-bar {
-      display: flex;
-      gap: 4px;
-      height: 14px;
-      align-items: center;
-      margin-top: 12px;
-    }
-    .pulse-node {
-      width: 3.5px; height: 100%;
-      background: #38bdf8; border-radius: 8px;
-      animation: waveNodes 0.6s ease-in-out infinite alternate;
-    }
-    .pulse-node:nth-child(2) { animation-delay: 0.15s; background: #06b6d4; }
-    .pulse-node:nth-child(3) { animation-delay: 0.3s; background: #10b981; }
-    .pulse-node:nth-child(4) { animation-delay: 0.45s; background: #6366f1; }
-
-    @keyframes waveNodes {
-      0% { transform: scaleY(0.25); opacity: 0.3; }
-      100% { transform: scaleY(1.35); opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
+    .linear-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8 0%, #10b981 100%);
+      border-radius: 10px;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Fixed-height layer ensuring shifting strings never pop layout parameters */
-    .status-text-zone {
+    /* Constrained dynamic boundaries to completely shield against resizing shifts */
+    .status-msg-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 48px; 
+      min-height: 40px;
       width: 100%;
       overflow: hidden;
-      margin-bottom: 4px;
     }
-    .status-string { 
-      color: #94a3b8; 
-      font-size: 13px; 
+    .status-label-string {
+      color: #64748b;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.4px; 
+      letter-spacing: 0.3px;
       text-align: center;
-      line-height: 1.5;
-      transition: opacity 0.25s ease, transform 0.25s ease; 
+      line-height: 1.4;
     }
     
     .fade-out { opacity: 0; visibility: hidden; }
@@ -187,39 +120,24 @@
 </head>
 <body>
 
-  <!-- LOADER VIEWS CONTAINER LAYER -->
+  <!-- MINIMALIST CORPORATE GLASS LOADER LAYER -->
   <div id="loader-wrapper">
-    <div class="cyber-grid"></div>
-    <div class="ambient-glow-orb orb-alpha"></div>
-    <div class="ambient-glow-orb orb-beta"></div>
+    <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo-static" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
     
-    <div class="w-full max-w-md px-4">
-      <div class="loader-frame-shell">
-        <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
-        
-        <div class="ring-track-box">
-          <svg class="w-full h-full">
-            <circle cx="55" cy="50" r="46" stroke="rgba(255,255,255,0.02)" stroke-width="4.5" fill="transparent"/>
-            <circle class="progress-ring-circle" id="dynamic-svg-ring" cx="50" cy="55" r="46" stroke="url(#cyberNeonGradient)" stroke-width="4.5" fill="transparent" stroke-dasharray="289.02" stroke-dashoffset="289.02" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="cyberNeonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#38bdf8" />
-                <stop offset="60%" stop-color="#06b6d4" />
-                <stop offset="100%" stop-color="#10b981" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-base font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">0%</div>
-        </div>
+    <div class="loader-telemetry-panel">
+      <!-- High-End Linear Loading System -->
+      <div class="linear-track-base">
+        <div id="linear-progressbar-fill" class="linear-progress-fill"></div>
+      </div>
+      
+      <div class="w-full flex justify-between items-center px-1 mb-3">
+        <span class="text-[11px] font-bold tracking-widest text-slate-500 uppercase">System Status</span>
+        <span id="percentage-counter" class="text-xs font-bold text-sky-400 tracking-tight">0%</span>
+      </div>
 
-        <!-- Static constraints guard row against dynamic sizing expansions -->
-        <div class="status-text-zone">
-          <div id="status" class="status-string">Establishing Database Connection...</div>
-        </div>
-        
-        <div class="pulse-data-bar">
-          <div class="pulse-node"></div><div class="pulse-node"></div><div class="pulse-node"></div><div class="pulse-node"></div>
-        </div>
+      <!-- Rigid text-box zone container pass -->
+      <div class="status-msg-container">
+        <div id="status" class="status-label-string">Establishing Connection...</div>
       </div>
     </div>
   </div>
@@ -428,13 +346,11 @@
     ];
 
     // =========================================================================
-    // LOADER TELEMETRY ENGINE WITH LAYOUT LOCKS
+    // MINIMALIST TELEMETRY DATA MOTOR
     // =========================================================================
-    const dynamicRing = document.getElementById('dynamic-svg-ring');
-    const percentReadout = document.getElementById('percentage-readout');
-    const statusText = document.getElementById('status');
-    const radius = 46;
-    const circumference = 2 * Math.PI * radius; // 289.02
+    const barProgressFill = document.getElementById('linear-progressbar-fill');
+    const percentCounter = document.getElementById('percentage-counter');
+    const statusLabel = document.getElementById('status');
 
     const stagingStatuses = [
       "Establishing Database Connection...", "Validating District Registry Data...",
@@ -444,44 +360,41 @@
     ];
     let currentStatusIndex = 0; let simulatedProgress = 0;
 
-    function updateLoaderMetrics(percent) {
-      const offset = circumference - (percent / 100) * circumference;
-      dynamicRing.style.strokeDashoffset = offset;
-      percentReadout.textContent = Math.floor(percent) + '%';
+    function refreshProgressBarFill(percent) {
+      barProgressFill.style.width = percent + '%';
+      percentCounter.textContent = Math.floor(percent) + '%';
     }
 
     const progressInterval = setInterval(() => {
-      if (simulatedProgress < 82) { 
-        simulatedProgress += Math.floor(Math.random() * 8) + 4; 
-      } else if (simulatedProgress < 97) { 
-        simulatedProgress += Math.floor(Math.random() * 2) + 0.5; 
+      if (simulatedProgress < 85) { 
+        simulatedProgress += Math.floor(Math.random() * 6) + 3; 
+      } else if (simulatedProgress < 98) { 
+        simulatedProgress += Math.floor(Math.random() * 1.5) + 0.2; 
       }
-      if (simulatedProgress > 97) simulatedProgress = 97;
-      updateLoaderMetrics(simulatedProgress);
-    }, 280);
+      if (simulatedProgress > 98) simulatedProgress = 98;
+      refreshProgressBarFill(simulatedProgress);
+    }, 240);
 
     const statusInterval = setInterval(() => {
       if (currentStatusIndex < stagingStatuses.length - 1) {
         currentStatusIndex++;
-        statusText.style.opacity = '0';
-        statusText.style.transform = 'translateY(4px)';
+        statusLabel.style.opacity = '0';
         setTimeout(() => {
-          statusText.textContent = stagingStatuses[currentStatusIndex];
-          statusText.style.opacity = '1';
-          statusText.style.transform = 'translateY(0)';
-        }, 300);
+          statusLabel.textContent = stagingStatuses[currentStatusIndex];
+          statusLabel.style.opacity = '1';
+        }, 200);
       }
-    }, 1300); 
+    }, 1450); 
 
     function completeLoading() {
       clearInterval(progressInterval);
       clearInterval(statusInterval);
       
       let currentPosition = simulatedProgress;
-      const endTimeline = setInterval(() => {
+      const finishTimeline = setInterval(() => {
         if (currentPosition >= 100) {
-          clearInterval(endTimeline);
-          statusText.textContent = "Database Synchronized Successfully";
+          clearInterval(finishTimeline);
+          statusLabel.textContent = "Database Synchronized Successfully";
           
           setTimeout(() => {
             const loader = document.getElementById('loader-wrapper');
@@ -489,12 +402,12 @@
             document.body.classList.add('loaded');
             document.getElementById('dashboard-ui').style.opacity = '1';
             
-            setTimeout(() => { loader.style.display = 'none'; }, 800);
-          }, 350);
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+          }, 250);
         } else {
-          currentPosition += 2;
+          currentPosition += 2.5;
           if (currentPosition > 100) currentPosition = 100;
-          updateLoaderMetrics(currentPosition);
+          refreshProgressBarFill(currentPosition);
         }
       }, 15);
     }
@@ -524,10 +437,10 @@
         if (!isManualRefresh) {
           clearInterval(statusInterval);
           clearInterval(progressInterval);
-          statusText.textContent = "⚠️ Database Offline";
-          statusText.style.color = "#f43f5e";
-          statusText.style.fontWeight = "bold";
-          updateLoaderMetrics(0);
+          statusLabel.textContent = "⚠️ Database Offline";
+          statusLabel.style.color = "#f43f5e";
+          statusLabel.style.fontWeight = "700";
+          refreshProgressBarFill(0);
         } else {
           document.getElementById('loadingStatus').innerHTML = "❌ Pipeline Failure";
           stopRefreshButtonSpinner();
