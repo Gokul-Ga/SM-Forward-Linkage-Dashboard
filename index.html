@@ -11,7 +11,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
     body, html { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: #0b1329; 
+      background-color: #050a15; 
       color: #f8fafc; 
       margin: 0;
       padding: 0;
@@ -47,7 +47,7 @@
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
     /* ========================================================================= */
-    /* CLEAN ECO-FLUID MESH LOADING CANVAS                                       */
+    /* CLEAN DEEP ECO-FLUID MESH LOADING CANVAS                                  */
     /* ========================================================================= */
     #loader-wrapper {
       position: fixed;
@@ -55,8 +55,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      /* Lightened base background to a premium deep slate */
-      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+      /* Much darker midnight-indigo gradient base layout */
+      background: radial-gradient(circle at center, #09111e 0%, #03070d 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -66,7 +66,7 @@
       overflow: hidden;
     }
 
-    /* Subtle Environmental Fluid Blobs */
+    /* Subtle Environmental Deep-Tint Fluid Blobs */
     .eco-wave-canvas {
       position: absolute;
       width: 100%;
@@ -78,17 +78,17 @@
     .eco-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(100px);
+      filter: blur(120px);
       animation: ecoFlow 22s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform;
     }
-    .blob-green {
-      background: rgba(16, 185, 129, 0.15); /* Soft SWM Emerald */
+    .blob-mint {
+      background: rgba(45, 212, 191, 0.08); /* Sophisticated Dark Mint Aura */
       width: 65vw; height: 65vw;
       top: -20%; right: -15%;
     }
-    .blob-blue {
-      background: rgba(56, 189, 248, 0.12); /* Clean Sky Blue */
+    .blob-teal {
+      background: rgba(13, 148, 136, 0.07); /* Deep Forest Teal Glow */
       width: 55vw; height: 55vw;
       bottom: -15%; left: -10%;
       animation-delay: -7s;
@@ -104,14 +104,14 @@
     .telemetry-glass-hub {
       position: relative;
       z-index: 10;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(11, 19, 36, 0.7);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.03);
       box-shadow: 
-        0 4px 30px rgba(0, 0, 0, 0.15),
-        inset 0 1px 2px rgba(255, 255, 255, 0.05),
-        0 20px 50px rgba(0, 0, 0, 0.4);
+        0 4px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.04),
+        0 25px 60px rgba(0, 0, 0, 0.6);
       padding: 48px;
       border-radius: 28px;
       display: flex;
@@ -123,7 +123,7 @@
     .brand-logo-static {
       width: 236px; height: auto; margin-bottom: 36px; background-color: #ffffff;
       padding: 14px 28px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
     /* Concentric Telemetry Rings */
@@ -157,7 +157,7 @@
       margin-bottom: 12px;
     }
     .status-msg-string {
-      color: #cbd5e1;
+      color: #94a3b8;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.3px;
@@ -170,14 +170,14 @@
       display: flex;
       gap: 16px;
       align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
       padding: 8px 20px;
       border-radius: 30px;
     }
-    .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.3); position: relative; }
-    .led-dot.active { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; animation: activeLedPulse 1s ease-in-out infinite alternate; }
-    .led-dot.active-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+    .led-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(148, 163, 184, 0.2); position: relative; }
+    .led-dot.active { background: #2dd4bf; box-shadow: 0 0 8px #2dd4bf; animation: activeLedPulse 1s ease-in-out infinite alternate; }
+    .led-dot.active-green { background: #14b8a6; box-shadow: 0 0 8px #14b8a6; }
 
     @keyframes activeLedPulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
     
@@ -188,30 +188,30 @@
 
   <!-- LOADER VIEWS TIED ENGINE PORTAL -->
   <div id="loader-wrapper">
-    <!-- Clean Environmental Flow Background -->
+    <!-- Dark Eco Flow Background Grid Layer -->
     <div class="eco-wave-canvas">
-      <div class="eco-blob blob-green"></div>
-      <div class="eco-blob blob-blue"></div>
+      <div class="eco-blob blob-mint"></div>
+      <div class="eco-blob blob-teal"></div>
     </div>
     
     <div class="w-full max-w-md px-6">
       <div class="telemetry-glass-hub">
         <img src="SM%20LOGO.png" alt="Suchitwa Mission Logo" class="brand-logo-static" onerror="this.src='https://gokul-ga.github.io/SM-Forward-Linkage-Dashboard/SM%20LOGO.png'">
         
-        <!-- Tech Concentric Dual Matrix Rings -->
+        <!-- Premium Dual Concentric Analytics Rings -->
         <div class="concentric-ring-wrapper">
           <svg width="130" height="130">
-            <circle cx="65" cy="65" r="46" stroke="rgba(255, 255, 255, 0.04)" stroke-width="4.5" fill="transparent"/>
+            <circle cx="65" cy="65" r="46" stroke="rgba(255, 255, 255, 0.02)" stroke-width="4.5" fill="transparent"/>
             <circle class="progress-ring-circle" id="dynamic-svg-ring" cx="65" cy="65" r="46" stroke="url(#executiveGradient)" stroke-width="4.5" fill="transparent" stroke-dasharray="289.02" stroke-dashoffset="289.02" stroke-linecap="round"/>
-            <circle class="outer-pulse-ring" cx="65" cy="65" r="56" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1.5" stroke-dasharray="15 35" fill="transparent" stroke-linecap="round"/>
+            <circle class="outer-pulse-ring" cx="65" cy="65" r="56" stroke="rgba(45, 212, 191, 0.06)" stroke-width="1.5" stroke-dasharray="15 35" fill="transparent" stroke-linecap="round"/>
             <defs>
               <linearGradient id="executiveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#38bdf8" />
-                <stop offset="100%" stop-color="#10b981" />
+                <stop offset="0%" stop-color="#14b8a6" />
+                <stop offset="100%" stop-color="#2dd4bf" />
               </linearGradient>
             </defs>
           </svg>
-          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-slate-100">0%</div>
+          <div id="percentage-readout" class="absolute inset-0 flex items-center justify-center text-lg font-bold tracking-tight text-teal-400">0%</div>
         </div>
 
         <div class="status-text-constraint-box">
